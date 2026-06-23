@@ -1,31 +1,42 @@
+# name: first-action
+# on: push
+# jobs:
+#   testJob:
+#     runs-on: ubuntu-latest
+#     steps:
+#         - name: Get code #steps
+#           uses: actions/checkout@v3
+#         - name: install nodeJs
+#           uses: actions/setup-node@v3
+#           with: 
+#             node-version: 18
+#         - name: install dependencies
+#           run: npm ci
+#         - name: run tests
+#           run: npm test  
+#   deploy:
+#     runs-on: ubuntu-latest
+#     needs: testJob
+#     steps:        
+#         - name:  Get code #steps
+#           uses: actions/checkout@v3
+#         - name: install nodeJs
+#           uses: actions/setup-node@v3
+#           with: 
+#             node-version: 18
+#         - name: install dependencies
+#           run: npm ci
+#         - name: build
+#           run: npm run build  
+#         - name: deploy
+#           run: echo "Deploying ..."
+
+
 name: first-action
 on: push
 jobs:
   testJob:
     runs-on: ubuntu-latest
     steps:
-        - name: Get code #steps
-          uses: actions/checkout@v3
-        - name: install nodeJs
-          uses: actions/setup-node@v3
-          with: 
-            node-version: 18
-        - name: install dependencies
-          run: npm ci
-        - name: run tests
-          run: npm test  
-  deploy:
-    runs-on: ubuntu-latest
-    steps:        
-        - name:  Get code #steps
-          uses: actions/checkout@v3
-        - name: install nodeJs
-          uses: actions/setup-node@v3
-          with: 
-            node-version: 18
-        - name: install dependencies
-          run: npm ci
-        - name: build
-          run: npm run build  
-        - name: deploy
-          run: echo "Deploying ..."
+        - name: get output
+          run: echo "${{ toJson(github)}}"
